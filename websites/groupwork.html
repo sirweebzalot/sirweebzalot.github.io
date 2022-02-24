@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="https://bit.ly/34elrsb">
+    <title>SIMPLE WEBSITE</title>
+    <style>
+        :root{
+            font-family: 'Poppins', sans-serif;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            line-height: 1.625;
+            scroll-behavior: smooth;
+        }
+        body{
+            background: #efe;
+        }
+        nav{
+            background-color: #3f4b5a;
+        }
+        /* ICONS */
+        .nav-icon{
+            font-size: 10px;
+        }
+        .heading-icon0{
+            margin-left: 15px;
+        }
+        .heading-icon1{
+            margin-right: 15px;
+        }
+        .navigation-bar{
+            max-widtH: 125ch;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navigation-name{
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .navigation-name > span{
+            color: #A0B9FE;
+        }
+        .navigation-links{
+            text-align: right;
+        }
+        .navigation-links:last-child{
+            padding-right: 10%;
+        }
+        .navigation-links ul li{
+            list-style: none;
+            display: inline-block;
+            padding: 8px 12px;
+            position: relative;
+        }
+        .navigation-links ul li a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 25px;
+            font-family: 'Dongle', sans-serif;
+        }
+        .navigation-links ul li::after{
+            content: '';
+            width: 0%;
+            height: 2px;
+            background-color: #A0B9FE;
+            display: block;
+            margin: auto;
+            transform-origin: left;
+        }
+        .navigation-links ul li:hover::after{
+            width: 100%;
+            transition: .5s;
+        }
+        .sub-navigation{
+            display: none;
+            text-align: left;
+        }
+        .navigation-links ul li:hover .sub-navigation{
+            display: block;
+            z-index: 10;
+            position: absolute;
+            background-color: #3f4b5a;
+            margin: 0 0 0 -15px;
+        }
+        .navigation-links ul li:hover .sub-navigation ul{
+            display: block;
+            margin: 10px;
+        }
+        .navigation-links ul li:hover .sub-navigation ul li{
+            width: 200px;
+            padding: 10px;
+        }
+        .navigation-links ul li:hover .sub-navigation ul li a:hover{
+            color: #A0B9FE;
+            transition: .5s;
+        }
+        .header{
+            height: 50vh;
+            position: relative;
+            background: linear-gradient(to right, rgba(0,0,0,.8) 20%, rgba(0,0,0,.3)), url('https://i.imgur.com/rWPgKJt.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .header-title{
+            height: 100%;
+            widtH: 100%;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            bottom: 2%;
+        }
+        .header-title small,
+        .header-title h1{
+            position: relative;
+            margin-left: 10%;
+        }
+        .header-title small{
+            font-weight: 400;
+            font-size: 20px;
+            text-align: left;
+            position: relative;
+            bottom: -2%;
+            border-radius: 20px;
+            box-shadow: 2px 2px 20px rgba(0,0,0,.6) inset;
+            outline: 2px solid #A0B9FE;
+            background: #3F4B5A;
+            padding: .1%;
+            width: 10ch;
+            text-align: center;
+        }
+        .header-title h1{
+            font-size: 70px;
+            text-align: left;
+        }
+        .introduction{
+            max-width: 100vw;
+            height: auto;
+            margin-bottom: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3%;
+        }
+        .left-column0{
+            height: 300px;
+            width: 450px;
+            padding: 2%;
+        }
+        .left-column0 img{
+            max-width: 100%;
+            max-height: 100%;
+            box-shadow: 9px 9px #3F4B5A;
+        }
+        .right-column0{
+            max-width: 75ch;
+            display: flex;
+            flex-direction: column;
+            padding: 2%;
+        }
+        .rule,
+        .right-column0 > .rule{
+            width: 150px;
+            height: 5px;
+            display: block;
+            background-color: #a0b9fe;
+            margin-bottom: 3%;
+        }
+        .right-column0 p{
+            font-size: 20px;
+        }
+        .row{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 200px;
+        }
+        .left-column{
+            width: 65%;
+            background-color: #3f4b5a;
+            color: #fff;
+            padding: 5% 10% 5% 7%;
+        }
+        .left-column h1{
+            font-size: 60px;
+            border-bottom: 2px solid #A0B9FE;
+        }
+        .left-column p{
+            padding-top: 4%;
+            font-size: 24px;
+        }
+        .right-column{
+            width: 35%;
+            background: url('https://i.imgur.com/L3IXIPq.jpg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .content-2{
+            text-align: center;
+            margin-top: 13%;
+        }
+        .content-2 h1{
+            font-size: 60px;
+            display: block;
+            max-width: 800px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-bottom: 2px solid #A0B9FE;
+        }
+        .content-2 h1 > span{
+            color: #3f4b5a;
+        }
+        .content-2 h1 > span2{
+            color: #A0B9FE;
+        }
+        .row2{
+            margin-top: 1%;
+            margin-bottom: 3%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            height: auto;
+        }
+        .column1{
+            flex-basis: 500px;
+            margin: 0 2% 2% 2%;
+            border-radius: 50px;
+            padding: 30px 24px 20px 24px;
+            background: #fff;
+            outline: 2px solid #3F4B5A;
+            box-shadow: 8px 10px #3F4B5A;
+        }
+        .column1 img{
+            width: 100%;
+        }
+        .column1 p{
+            color: #000;
+            text-align: left;
+            font-size: 20px;
+            padding: 3%;
+        }
+        .column1 > div{
+            background: #3F4B5A;
+            color: #fff;
+            display: block;
+            widtH: 100%;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .row2-row{
+            color: #fff;
+            height: auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5%;
+        }
+        .row2-row > p{
+            background: #3f4b5a;
+            max-width: 80ch;
+            padding: 3%;
+            font-weight: bold;
+            font-size: 22px;
+            outline: 3px solid #3F4B5A;
+            outline-offset: 5px; 
+            box-shadow: 20px 20px #A0B9FE;
+            transform: rotate(4deg);
+        }
+        .checkpoint{
+            margin: auto;
+            text-align: center;
+            background-color: #fff;
+            margin: 10% 2% 2% 2%;
+        }
+        .checkpoint h1{
+            color: #3f4b5a;
+            font-size: 60px;
+            text-align: center;
+        }
+        .row3{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2%;
+        }
+        .row3 li{
+            list-style-type: none;
+            margin-left: 10%;
+            font-size: 18px;
+        }
+        .row3 ul{
+            position: relative;
+        }
+        .row3 li::before{
+            content: '◈';
+            display: inline-block;
+            position: absolute;
+            left: 0;
+        }
+        .left-column2{
+            width: 60%;
+            background-color: #3f4b5a;
+            color: #fff;
+            padding: 5% 10% 5% 7%;
+            outline: 1px dashed #fff;
+            outline-offset: -30px;
+        }
+        .left-column2 h2{
+            font-size: 50px;
+            border-bottom: 2px solid #A0B9FE;
+        }
+        .left-column2 p{
+            padding-top: 4%;
+            font-size: 21px;
+        }
+        .right-column2{
+            width: 40%;
+            background: url('https://i.imgur.com/HFGvyHZ.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .left-column3{
+            width: 40%;
+            background: url('https://i.imgur.com/w21Y09j.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .right-column3{
+            width: 60%;
+            background-color: #3f4b5a;
+            color: #fff;
+            padding: 5% 10% 5% 7%;
+            outline: 1px dashed #fff;
+            outline-offset: -30px;
+        }
+        .right-column3 h2{
+            font-size: 50px;
+            border-bottom: 2px solid #A0B9FE;
+        }
+        .right-column3 p{
+            padding-top: 4%;
+            font-size: 21px;
+        }
+        /* for the examples of input and output devices */
+        .examples-cards{
+            width: 100%;
+            display: flex;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 3%;
+        }
+        .examples-cards > div{
+            flex-basis: 10%;
+            text-align: center;
+        }
+        .examples-cards i{
+            font-size: 30px;
+            line-height: 2em;
+        }
+        .examples-cards p{
+            font-size: 17px;
+        }
+        .left-column4{
+            width: 60%;
+            background-color: #fff;
+            color: #3f4b5a;
+            padding: 5% 10% 5% 7%;
+            outline: 1px dashed #3f4b5a;
+            outline-offset: -30px;
+        }
+        .left-column4 h2{
+            font-size: 50px;
+            border-bottom: 2px solid #3f4b5a;
+        }
+        .left-column4 p{
+            padding-top: 4%;
+            font-size: 20px;
+        }
+        .right-column4{
+            width: 40%;
+        }
+        .cpu{
+            background: url('https://bit.ly/34bPaCd');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .motherboard{
+            background: url('https://i.imgur.com/xoyxYWg.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .left-column5{
+            width: 40%;
+            background: url('https://i.imgur.com/nqIsvXt.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .right-column5{
+            width: 60%;
+            background-color: #fff;
+            color: #3f4b5a;
+            padding: 5% 10% 5% 7%;
+            outline: 1px dashed #3f4b5a;
+            outline-offset: -30px;
+        }
+        .right-column5 h2{
+            font-size: 50px;
+            border-bottom: 2px solid #3f4b5a;
+        }
+        .right-column5 p{
+            padding-top: 4%;
+            font-size: 20px;
+        }
+        .back-to-top-btn{
+            position: sticky;
+            display: block;
+            width: 50px;
+            height: 50px;
+            top: 90vh;
+            left: 94%;
+            background: #A0B9FE;
+            box-shadow: 5px 5px #3F4B5A;
+            text-align: center;
+            line-height: 50px;
+            font-size: 25px;
+            transition: .2s;
+        }
+        .back-to-top-btn:hover{
+            color: white;
+            background: #3F4B5A;
+            box-shadow: 5px 5px #A0B9FE;
+            outline: 1px solid #3F4B5A;
+            outline-offset: 3px;
+        }
+        .content-3{
+            background-color: #f4efeb;
+            align-items: center;
+            text-align: center;
+            padding: 5% 10% 5% 7%;;
+            margin-bottom: 2%;
+        }
+        .content-3 h2{
+            font-size: 50px;
+            border-bottom: 2px solid #3f4b5a;
+            margin-bottom: 3%;
+        }
+        .content-3 > .image-container{
+            max-height: 100%;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 4%;
+        }
+        .content-3 .image-container > img{
+            outline: 2px solid #3F4B5A;
+            outline-offset: 7px;
+            box-shadow: 20px 25px #A0B9FE;
+            min-width: 65%;
+            min-height: 65%;
+        }
+        .content-3 p{
+            font-size: 20px;
+            margin-bottom: 2%;
+        }
+        .row4{
+            margin-top: 5%;
+            display: flex;
+            justify-content: center;
+        }
+        .content-4{
+            background-color: #3f4b5a;
+            align-items: center;
+            text-align: center;
+            padding: 5% 10% 5% 7%;;
+            margin-bottom: 2%;
+        }
+        .content-4 h2{
+            font-size: 50px;
+            border-bottom: 2px solid #fff;
+            color: #fff;
+            margin-bottom: 2%;
+        }
+        .content-4 p{
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 2%;
+        }
+        #adaptercards{
+            margin-bottom: 0;
+        }
+        .column2{
+            flex-basis: 500px;
+            margin: 0 2% 2% 2%;
+            border-radius: 50px;
+            padding: 30px 24px 0px 24px;
+            background: #3F4B5A;
+            outline: 2px solid #fff;
+            box-shadow: 8px 10px #fff;
+        }
+        .column2 h3{
+            color: #fff;
+            margin-bottom: 2%;
+            position: relative;
+        }
+        .column2 img{
+            width: 100%;
+            border-radius: 20px;
+        }
+        .column2 p{
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            padding: 2%;
+            margin-bottom: 2%;
+        }
+        .column2 > div{
+            background: #3F4B5A;
+            color: #fff;
+            display: block;
+            widtH: 100%;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        /* for responsive navbar purposes */
+        @media screen and (max-width: 1305px){
+            .navigation-bar{
+                margin: 0px 20px 0px 20px;
+            }
+        }
+        /* for responsive .row purposes */
+        @media screen and (max-width: 1200px){
+            .left-column{
+                width: 50%;
+            }
+            .left-column h1{
+                font-size: 50px;
+            }
+            .left-column p{
+                font-size: 20px;
+            }
+            .right-column{
+                width: 50%;
+            }
+        }
+        /* for header title sizing */
+        @media screen and (max-width: 1100px){
+            .header-title h1{
+                font-size: 60px;
+            }
+        }
+    </style>    
+</head>
+
+<body>
+    <!--------------------------NAVIGATION BAR-------------------------->
+    <nav>
+        <div class="navigation-bar">
+            <a href="#" class="navigation-name">Team<span>Liquid</span></a>
+            <div class="navigation-links">
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#home">COMPUTER <i class="bi bi-caret-down-fill nav-icon"></i></a>
+                        <div class="sub-navigation">
+                            <ul>
+                                <a href="#definition"><li>DEFINITION</li></a>
+                                <a href="#computersystem"><li>COMPUTER SYSTEM</li></a>
+                                <a href="#hardwaresoftware"><li>HARDWARE & SOFTWARE</li></a>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#pcparts">PARTS <i class="bi bi-caret-down-fill nav-icon"></i></a>
+                        <div class="sub-navigation">
+                            <ul>
+                                <a href="#inputdevices"><li>INPUT DEVICES</li></a>
+                                <a href="#outputdevices"><li>OUTPUT DEVICES</li></a>
+                                <a href="#cpu"><li>CPU</li></a>
+                                <a href="#memory"><li>MEMORY</li></a>
+                                <a href="#storage"><li>STORAGE DEVICE</li></a>
+                                <a href="#case"><li>CASE</li></a>
+                                <a href="#powersupply"><li>POWER SUPPLY</li></a>
+                                <a href="#connectorports"><li>CONNECTOR & PORTS</li></a>
+                                <a href="#motherboard"><li>MOTHERBOARD</li></a>
+                                <a href="#adaptercards"><li>ADAPTER CARDS</li></a>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--------------------------HEADER-------------------------->
+    <section class="header" id="home">
+        <div class="header-title" id="header-title">
+            <small>Module 1</small>
+            <h1>Introduction to Computers</h1>
+            <h3>&nbsp;</h3>
+        </div>
+    </section>
+    
+    <!--------------------------DEFINITION-------------------------->    
+    <section class="introduction" id="definition">
+        <div class="left-column0">
+            <img src="https://i.imgur.com/V1zEsUM.jpg" alt="Computers">
+        </div>
+        <div class="right-column0">
+            <div class="rule"></div>
+            <p>Computer is an electronic device that performs processes, calculations, and operations based on instructions provided by a software or hardware program. It has the ability to accept data (input), process it, and produce outputs. Computers can also store data for later uses in appropriate storage devices, and retrieve where it is necessary. Nowadays, computers are primarily used for a variety of purposes ranging from browsing  the web, writing documents, editing videos, creating applications, playing video games, etc.</p>
+        </div>
+    </section>
+
+    <!----------------BACK TO TOP BUTTON----------------------->
+    <a href="#" class="back-to-top-btn"><i class="bi bi-chevron-up"></i></a>
+
+    <!--------------------------COMPUTER SYSTEM-------------------------->
+    <section class="row" id="computersystem">
+        <div class="left-column">
+            <h1>Computer System</h1>
+            <p>are all of their components, software, hardware, and peripherals. It is programmed to perform a certain task as per computer program instructions.</p>
+        </div>
+        <div class="right-column">
+        </div>
+    </section>
+
+    <!--------------------------HARDWARE AND SOFTWARE-------------------------->
+    <section class="content-2" id="hardwaresoftware">
+        <h1><span>Hardware</span> VS. <span2>Software</span2></h1>
+
+        <div class="row2">
+            <div class="column1">
+                <img src="https://i.imgur.com/KtCEfId.jpg">
+                <div>Hardware</div>
+                <p>Hardware are any part of your computer that has a physical structure, such as the keyboard or mouse. This also includes all of the computer’s internal parts.</p>
+            </div>
+            <div class="column1">
+                <img src="https://i.imgur.com/rRIXIVA.jpg?2">
+                <div>Software</div>
+                <p>Software are a set of instructions that tells the hardware what to do and how to do it. Examples of software include web browsers, games, and word processors.</p>
+            </div>
+        </div>
+        <div class="row2-row">
+            <p>Computers rely on both of these in order to function.<br> A quick example is using a web browser to search on the internet<br> while using a mouse to navigate from page to page.</p>
+        </div>
+    </section>
+    
+    <!--------------------------START OF COMPUTER COMPONENTS-------------------------->
+    <section class="checkpoint" id="pcparts">
+        <h1>COMPUTER COMPONENTS</h1>
+    </section>
+
+    <!--------------------------INPUT DEVICES-------------------------->
+    <section class="row3" id="inputdevices">
+        <div class="left-column2">
+            <h2>Input Devices<i class="bi bi-box-arrow-in-right heading-icon0"></i></h2>            
+            <p>Input devices are pieces of computer hardware that are connected to a computer that sends information into the computer used for interaction and control.</p>
+            <br><small>Examples include, but not limited to: </small>
+            <div class="examples-cards">
+                <div> <i class="bi bi-mouse"></i><p>Mouse</p></div>
+                <div> <i class="bi bi-keyboard"></i><p>Keyboard</p></div>
+                <div> <i class="bi bi-webcam"></i><p>Webcam</p></div>
+                <div> <i class="bi bi-pencil-square"></i><p>Stylus</p></div>
+                <div> <i class="bi bi-mic"></i><p>Microphone</p></div>
+            </div>
+        </div>
+        <div class="right-column2"></div>
+    </section>
+
+    <!--------------------------OUTPUT DEVICES-------------------------->
+    <section class="row3" id="outputdevices">
+        <div class="left-column3"></div>
+        <div class="right-column3">
+            <h2>Output Devices<i class="bi bi-box-arrow-right heading-icon0"></i></h2>
+            <p>Any device or piece of computer hardware equipment that converts information into human-readable form. These are in the form of text, graphics, tactile, audio, or video.</p>
+            <br><small>Examples include, but not limited to: </small>
+            <div class="examples-cards">
+                <div> <i class="bi bi-display"></i><p>Monitor</p></div>
+                <div> <i class="bi bi-headphones"></i><p>Headphones</p></div>
+                <div> <i class="bi bi-speaker"></i><p>Speaker</p></div>
+                <div> <i class="bi bi-printer"></i><p>Printer</p></div>
+                <div> <i class="bi bi-projector"></i><p>Projector</p></div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!--------------------------CPU-------------------------->
+    <section class="row3" id="cpu">
+        <div class="left-column4">
+            <h2><i class="bi bi-cpu-fill heading-icon1"></i>CPU</h2>
+            <p>Often called the brain of a computer, the CPU is a piece of hardware that carries out the instruction of a computer program. It receives instructions represented as a series of numbers, decodes these instructions into signals, and finally, executes these instructions by sending these signals to relevant parts of the CPU to be completed.</p>
+            <p>Modern CPU sockets and processor packages are built in following architectures:</p>
+            <ul>
+                <li><i>Pin Grid Array</i> (PGA) - the pins are on the underside of the processor package and are inserted into the motherboard CPU socket.</li>
+                <li><i>Land Grid Array</i> (LGA) - the pins are in the socket instead of on the processor</li>
+            </ul>
+        </div>
+        <div class="right-column4 cpu"></div>
+    </section>
+
+    <!--------------------------COMPUTER MEMORY-------------------------->
+    <section class="row3" id="memory">
+        <div class="left-column5"></div>
+        <div class="right-column5">
+            <h2><i class="bi bi-memory heading-icon1"></i>Memory</h2>
+            <p>Computer memory refers to the device used to store data or programs on a temporary or permanent basis for immediate use in computer or related computer hardware and digital electronic devices.</p>
+            <p>There are 2 types of Computer Memory:</p>
+            <ul>
+                <li><i>RAM</i> (Random Access Memory) - temporary working storage for data and programs that are being accessed by CPU.</li>
+                <li><i>ROM</i> (Read Only Memory) - non-volatile memory that permanently stores instruction from your computer.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!--------------------------STORAGE DEVICES-------------------------->
+    <section class="content-3" id="storage">
+        <h2><i class="bi bi-hdd-fill heading-icon1"></i>Storage</h2>
+        <p>Storage Devices are used for storing non-volatile data in a computer system. The operating system is also located in the storage device, so the faster the storage device, the quicker the operating system can run. Hard Disk Drives, Solid State Drives, and Optical storage devices are some examples of storage devices.</p>
+
+        <p>Let's take a look at the two most common storage device found in computers.</p>
+        
+        <div class="row4">
+            <div class="column1">
+                <h3 style="font-size: 23px;"><i class="bi bi-device-hdd-fill heading-icon1"></i>HDD</h3>
+                <img src="https://i.imgur.com/ty4upBr.png" alt="Hard Disk Drive">
+                <p style="font-size: 18px;">Hard Disk Drives are one of the most common types of storage since it is relatively cheap. HDD is reliable, and it can store a vast amount of data. These storage devices contain moving parts that work using electromagnets to read and write data. Reading and writing speed is slower than SSD because of physically moving parts. The physical mechanisms also make noise, and it can easily break, which can corrupt the data stored.</p>
+            </div>
+            <div class="column1">
+                <h3 style="font-size: 23px;"><i class="bi bi-device-ssd-fill heading-icon1"></i>SSD</h3>
+                <img src="https://i.imgur.com/zCbVy1L.png" alt="Solid State Drive">
+                <p style="font-size: 18px;">Solid State Drives are also a common storage device; however, it is much more expensive. This storage device utilizes flash-based memory, which is significantly faster than HDD. The physical dimensions of the SSD are smaller. This storage is more durable than HDD because it does not require moving physical parts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--------------------------CASES-------------------------->
+    <section class="content-4" id="case">
+        <h2><i class="bi bi-pc heading-icon1"></i>Case</h2>
+        <p>Computer case is usually referred to as the system case. It is also referred to as a box, chassis or main unit. It is essentially a metal box that contains the other parts of the computer, like the motherboard, hard drive, optical drive, floppy disk drive, etc.</p>
+        <p>There are 4 different types of computer case.</p>
+    
+        <div class="row4">
+            <div class="column2">
+                <h3 style="font-size: 23px;">Full Tower</h3>
+                <div class="image-container"><img src="https://i.imgur.com/gyFovMO.png" alt="Full Tower case"></div>
+                <p style="font-size: 18px;">is the largest of the four cases. It is used for servers and some high-end workstations. It gives extra room for storage, power, and adapter cards.</p>
+            </div>
+            <div class="column2">
+                <h3 style="font-size: 23px;">Mid-Tower</h3>
+                <div class="image-container"><img src="https://i.imgur.com/0EcJ7Yz.png" alt="Mid-Tower case"></div>
+                <p style="font-size: 18px;">a computer case that allows the use of multiple drives and almost any type of motherboard with an acceptable overall size.</p>
+            </div>
+            <div class="column2">
+                <h3 style="font-size: 23px;">Mini Tower</h3>
+                <img src="https://i.imgur.com/EPXYj3W.png" alt="Mini Tower case">
+                <p style="font-size: 18px;">used for high-end users and power users. It has extra space for devices like video cards, extra adapter cards, and storage devices.</p>
+            </div>
+            <div class="column2">
+                <h3 style="font-size: 23px;">Small Form Factor</h3>
+                <img src="https://i.imgur.com/J7mPZwb.png" alt="Small Form Factor case">
+                <p style="font-size: 18px;">is the smallest out of the standard cases. It has limited expansion ability.</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <!--------------------------POWER SUPPLY-------------------------->
+    <section class="content-3" id="powersupply">
+        <h2><i class="bi bi-outlet heading-icon1"></i>Power Supply</h2>
+        <div class="image-container"><img src="https://i.imgur.com/B7cGQ20.png" alt="Power Supplies"></div>
+        <p>Computer systems need the power to run. The PSU converts AC power into lower voltage DC power and runs it through the different components of a computer. Powerful computer components like high-end GPUs require high power. The better the power supply, the more watts it can supply to computer components to run smoothly. The desktop computer power supply form factors include:</p>
+        <div class="row4">
+            <div class="column1">
+                <h3 style="font-size: 23px;">Advanced Technology (AT)</h3>
+                <p style="font-size: 18px;">Original power supply for legacy computer systems
+                </p>
+            </div>
+            <div class="column1">
+                <h3 style="font-size: 23px;">AT Extended (ATX)</h3>
+                <p style="font-size: 18px;">the updated version of the AT</p>
+            </div>
+            <div class="column1">
+                <h3 style="font-size: 23px;">ATX12V</h3>
+                <p style="font-size: 18px;">the most common power supply on the market today</p>
+            </div>
+            <div class="column1">
+                <h3 style="font-size: 23px;">EPS12V</h3>
+                <p style="font-size: 18px;">originally designed for network servers but is now commonly used in high-end desktop models. 
+                </p>
+            </div>
+        </div>
+    </section>
+    
+	<!----------------------CONNECTOR AND PORTS------------------------>
+    <section class="content-4" id="connectorports">
+        <h2><i class="bi bi-usb-symbol heading-icon1"></i>Connectors & Ports</i></h2>
+            <p>A port is a connector at the back or side of a computer where you plug in an external device such as a printer, keyboard, scanner, mouse, or modem. This connection allows instructions and data to flow between the computer and the device. These computer ports are also commonly referred to as the Input/Output ports (I/O ports).</p>
+            <p>Below are common examples</p>        
+        <div class="row4">
+            <div class="column2">
+                <h3 style="font-size: 23px;">USB</h3>
+                <p style="text-align: center;">(Universal Serial Bus)</p>
+                <img src="https://i.imgur.com/TTTZ4Sq.png" alt="USB port types">
+                <p style="font-size: 18px;">this port is very versatile in use; It can be used for various purposes, such as to transfer data, to connect peripheral devices, and even as an interface for charging devices such as smartphones, digital cameras, etc. Today, it has replaced PS/2 connectors, game ports, serial and parallel ports, etc.</p>
+            </div>
+            <div class="column2">
+                <h3 style="font-size: 23px;">3.5 mm Audio Jack</h3>
+                <img src="https://i.imgur.com/vjKxLx7.png" alt="an image of 3.5mm Audio Jack">
+                <p style="font-size: 18px;">It is a small round connector, port, or an audio jack commonly found on laptops, computers, phones, etc. It is designed to connect to wired headphones and speakers. In other words, it accepts a pin-shaped plug from a headphone, earphone, etc. The measurement "3.5 mm" denotes the diameter of the connector. </p>
+            </div>
+        </div>
+        <div class="row4">
+            <div class="column2">
+                <h3 style="font-size: 23px;">HDMI</h3>
+                <p style="text-align: center;">(High Definition Media Interface)</p>
+                <img src="https://i.imgur.com/raJIBLv.png" alt="an HDMI cable">
+                <p style="font-size: 18px;">is a digital interface developed to connect high definition devices such as digital cameras, gaming consoles, etc., to computers and TVs with HDMI ports. Besides this, it can carry uncompressed video and uncompressed or compressed audio signals. The advanced version of HDMI, such as 2.0, can transfer video signals of up to a resolution of 4096x2160.</p>
+            </div>
+            <div class="column2">
+                <h3 style="font-size: 23px;">VGA port</h3>
+                <p style="text-align: center;">(Video Graphics Array)</p>
+                <img src="https://i.imgur.com/kNI4yGY.png" alt="a VGA port cable">
+                <p style="font-size: 18px;">This port is commonly found in computers, projectors, and high definition TVs. It is a D-sub connector called DR-15 as it has 15 pins, which are arranged in 3 rows with five pins in each row. It was most often used to connect CPUs with CRT monitors. Still, most of the LCD and LED monitors come with VGA ports. However, these ports don't assure high picture quality as VGA can carry only analogue video signals up to a resolution of 648X480.</p>
+            </div>
+        </div>
+            <br><p>and many more! like: <b>DVI, Display Port, Network, Thunderbolt 1 2 & 3, PS/2</b><br><i style="font-size: 50px;" class="bi bi-three-dots"></i></p>
+    </section>
+    
+    <!--------------------------MOTHERBOARD-------------------------->
+    <section class="row3" id="motherboard">
+        <div class="left-column4">
+            <h2><i class="bi bi-motherboard-fill heading-icon1"></i></i>MOTHERBOARD</h2>
+            <p>The motherboard is also called the system board or main board. This is the most important part of a computer. It is medium communication for the entire computer system. All computer components or devices are connected to the motherboard.</p>
+            <p>It facilitates different slots and ports, in which different parts of the computer can connect in order to run. Some examples are CPU slots or sockets in which is used to connect the microprocessor to the motherboard, RAM slots for attaching RAM chips, and PCI slots (Peripheral Component Interface) that allows insertion of expansion cards like network cards, sound cards, and video cards.
+            </p>
+        </div>
+        <div class="right-column4 motherboard"></div>
+    </section>
+	
+    <!-------------------------ADAPTER CARDS-------------------------->
+    <section class="content-4" id="adaptercards">
+        <h2><i class="bi bi-pci-card heading-icon1"></i>Adapter Cards</h2>
+            <p>Adapter cards increase a computer's functionality by adding controllers for specific devices or by replacing malfunctioning ports.</p>
+        
+        <div class="row4">
+            <div class="column2">
+                <h3 style="font-size: 23px;">NIC</h3>
+                <img src="https://i.imgur.com/f1mwzbj.jpg" alt="">
+                <p style="font-size: 18px;">Original power supply for legacy computer systems.</p>
+            </div>
+            <div class="column2">
+                <h3 style="font-size: 23px;">Wireless NIC</h3>
+                <img src="https://i.imgur.com/MXQ5i6l.jpg" alt="">
+                <p style="font-size: 18px;">connects a computer to a network using a network cable.</p>
+            </div>
+            <div class="column2">
+                <h3 style="font-size: 23px;">Sound adapter</h3>
+                <img src="https://i.imgur.com/MF5WE2D.jpg" alt="">
+                <p style="font-size: 18px;">provides audio capability.</p>
+            </div>
+        </div>
+        <div class="row4">
+            <div class="column2">
+                <h3 style="font-size: 23px;">Video adapter</h3>
+                <img src="https://i.imgur.com/cxo0A1Y.jpg" alt="">
+                <p style="font-size: 18px;">provides graphic capability.</p>
+            </div>
+            <div class="column2">
+                <h3 style="font-size: 23px;">Modem adapter</h3>
+                <img src="https://i.imgur.com/80Pazgd.jpg" alt="">
+                <p style="font-size: 18px;">connects a computer to the Internet using a phone line.</p>
+            </div>
+            <div class="column2">
+                <h3 style="font-size: 23px;">SCSI adapter</h3>
+                <img src="https://i.imgur.com/ETbd5yu.jpg" alt="">
+                <p style="font-size: 18px;">connects SCSI devices, such as hard drives or tape drives, to a computer.</p>
+            </div>
+        </div>
+        <div class="row4">
+            <div class="column2">
+                <h3 style="font-size: 23px;">RAID adapter</h3>
+                <img src="https://i.imgur.com/9kvojI7.jpg" alt="">
+                <p style="font-size: 18px;">connects multiple hard drives to a computer to provide redundancy and to improve performance.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
